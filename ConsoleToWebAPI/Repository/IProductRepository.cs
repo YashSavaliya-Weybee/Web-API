@@ -7,5 +7,7 @@ namespace ConsoleToWebAPI.Repository
     {
         int AddProduct(ProductModel product);
         List<ProductModel> GetAllProducts();
+
+        string GetName();
     }
 }
