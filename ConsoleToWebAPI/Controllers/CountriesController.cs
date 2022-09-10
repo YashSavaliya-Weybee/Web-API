@@ -19,10 +19,28 @@ namespace ConsoleToWebAPI.Controllers
         //public int Population { get; set; }
         //public string Area { get; set; }
 
-        [HttpPost("{id}")]
-        public IActionResult addCountry([FromHeader] int id)
+        //[HttpPost("{id}")]
+        //public IActionResult addCountry([FromHeader] int id)
+        //{
+        //    return Ok($"Id = {id}");
+        //}
+
+        [HttpGet("search")]
+        public IActionResult SearchCountries([ModelBinder(typeof(CustomBinder))] string[] countries)
         {
-            return Ok($"Id = {id}");
+            return Ok(countries[0] + " " + countries[1] + " " + countries[2] + " " + countries[3]);
+        }
+
+        //[HttpGet("{id}")]
+        //public IActionResult CountryDetails([ModelBinder(Name = "Id")] CountryModel country)
+        //{
+        //    return Ok(country);
+        //}
+
+        [HttpGet("{id}")]
+        public IActionResult Country1Details([ModelBinder(typeof(CustomBinderCountryDetails), Name = "Id")] CountryModel country)
+        {
+            return Ok(country);
         }
     }
 }
